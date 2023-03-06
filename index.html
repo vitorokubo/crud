@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, shrink-to-fit=no"
+		/>
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+			crossorigin="anonymous"
+		/>
+		<style>
+			.form-switch .form-check-input {
+				background-color: red;
+				border: none;
+				outline: 0;
+				box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+				background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba(255,255,255,1.0)'/></svg>");
+			}
+			.form-switch .form-check-input:checked {
+				background-color: #30d158;
+				border: none;
+				background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba(255,255,255,1.0)'/></svg>");
+			}
+		</style>
+		<title>Document</title>
+	</head>
+	<body
+		class="justify-content-center my-3"
+		style="
+			background-image: url('https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1176&q=80');
+			background-size: cover;
+		"
+	>
+		<main style="max-width: 800px; margin: auto">
+			<div
+				class="modal fade"
+				id="editModal"
+				tabindex="-1"
+				aria-labelledby="editFormLabel"
+				aria-hidden="true"
+			>
+				<div class="modal-dialog modal-dialog-centered">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="editFormLabel">
+								Editar Produto
+							</h5>
+							<button
+								type="button"
+								class="btn-close"
+								data-bs-dismiss="modal"
+								aria-label="Close"
+							></button>
+						</div>
+						<div class="modal-body">
+							<form id="editForm">
+								<div class="mb-3">
+									<label
+										class="form-label"
+										for="editProductName"
+										>Produto</label
+									>
+									<input
+										type="text"
+										class="form-control"
+										id="editProductName"
+										placeholder="Nome do Produto"
+										required
+									/>
+								</div>
+								<div class="mb-3">
+									<label
+										class="form-label"
+										for="editProductValue"
+										>Valor</label
+									>
+									<input
+										type="number"
+										class="form-control"
+										id="editProductValue"
+										placeholder="Valor do Produto em R$"
+										step="0.01"
+										required
+									/>
+								</div>
+								<div class="mb-3">
+									<label
+										for="editDescriProduto"
+										class="form-label"
+										>Descrição do Produto</label
+									>
+									<textarea
+										class="form-control"
+										id="editDescriProduto"
+										rows="3"
+										placeholder="Descrição ..."
+										style="
+											overflow: scroll;
+											max-height: 200px;
+										"
+										required
+									></textarea>
+								</div>
+								<div
+									class="mb-3 d-flex justify-content-between flex-wrap"
+								>
+									<div class="form-check form-switch">
+										<input
+											class="form-check-input"
+											type="checkbox"
+											id="editProductAvailable"
+											checked
+										/>
+										<label
+											class="form-check-label"
+											for="editProductAvailable"
+											>Produto Disponível
+										</label>
+									</div>
+								</div>
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button
+								type="button"
+								class="btn btn-secondary"
+								data-bs-dismiss="modal"
+							>
+								Fechar
+							</button>
+							<button
+								type="submit"
+								data-bs-dismiss="modal"
+								class="btn btn-primary"
+								form="editForm"
+							>
+								Salvar Produto
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div
+				class="modal fade"
+				id="deleteModal"
+				tabindex="-1"
+				aria-labelledby="deleteFormLabel"
+				aria-hidden="true"
+			>
+				<div class="modal-dialog modal-dialog-centered">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="deleteFormLabel">
+								Deletar Produto
+							</h5>
+							<button
+								type="button"
+								class="btn-close"
+								data-bs-dismiss="modal"
+								aria-label="Close"
+							></button>
+						</div>
+						<div class="modal-body">
+							<p></p>
+							<div class="modal-footer">
+								<button
+									type="button"
+									class="btn btn-secondary"
+									data-bs-dismiss="modal"
+								>
+									Cancelar
+								</button>
+								<button
+									type="submit"
+									id="deleteConfirm"
+									data-bs-dismiss="modal"
+									class="btn btn-warning"
+									form="editForm"
+									onclick="confirmDelete()"
+								>
+									Confirmar
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="card p-3 mb-3">
+				<h1>Formulario de Produto</h1>
+				<form id="productForm">
+					<div class="mb-3">
+						<label class="form-label" for="inputNameProduct"
+							>Produto</label
+						>
+						<input
+							type="text"
+							class="form-control"
+							id="inputProductName"
+							placeholder="Nome do Produto"
+							required
+						/>
+					</div>
+					<div class="mb-3">
+						<label class="form-label" for="inputProductValue"
+							>Valor</label
+						>
+						<input
+							type="number"
+							class="form-control"
+							id="inputProductValue"
+							placeholder="Valor do Produto em R$"
+							step="0.01"
+							required
+						/>
+					</div>
+					<div class="mb-3">
+						<label for="descriProduto" class="form-label"
+							>Descrição do Produto</label
+						>
+						<textarea
+							class="form-control"
+							id="descriProduto"
+							rows="3"
+							placeholder="Descrição ..."
+							style="overflow: scroll; max-height: 200px"
+							required
+						></textarea>
+					</div>
+					<div class="mb-3 d-flex justify-content-between flex-wrap">
+						<div class="form-check form-switch">
+							<input
+								class="form-check-input"
+								type="checkbox"
+								id="inputProductAvailable"
+								checked
+							/>
+							<label
+								class="form-check-label"
+								for="inputProductAvailable"
+								>Produto Disponível
+							</label>
+						</div>
+						<button type="submit" class="btn btn-primary">
+							Registrar Produto
+						</button>
+					</div>
+				</form>
+			</div>
+			<div class="card p-3 table-responsive">
+				<h2>Produtos Cadastrados</h2>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Produto</th>
+							<th>Valor</th>
+							<th>Disponibilidade</th>
+							<th>Descrição</th>
+							<th>Editar</th>
+						</tr>
+					</thead>
+					<tbody id="tableBody">
+						<tr>
+							<td colspan="7">Não há produtos cadastrados</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</main>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+			crossorigin="anonymous"
+		></script>
+		<script src="main.js"></script>
+	</body>
+</html>
