@@ -14,7 +14,7 @@ Optei por deixar o código separado do html mas poderia ter integrado em um úni
 
 <h2 id='Iniciar o projeto'>Como iniciar o projeto</h2>
 Para iniciar o projeto basta ter extensão do live server no vscode.
-Caso queira ver o projeto online -> [link](https://vitorokubo.github.io/crud/) .
+Caso queira ver o projeto online [link](https://vitorokubo.github.io/crud/) .
 
 <h2>Melhorias a serem feitas</h2>
 Adicionar o botão de listagem ascendente e descendente por valor.
