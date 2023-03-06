@@ -6,15 +6,15 @@
 <img src="https://img.shields.io/badge/bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white"/>
 </div>
 
-<h2 id='descrição'>Descrição do projeto</h2>
+<h2>Descrição do projeto</h2>
 Projeto de CRUD simples para registro de itens, com listagem, edição, adição e remoção dos produtos.
 O objetivo do projeto foi entregar um CRUD simples feito rapidamente em meio período, utilizando um escopo limitado de tecnologias e em apenas um arquivo html.
 O desafio foi utilizar apenas Javascript Vanilla e Bootstrap. Os dados são armazaneados em localstorage.
 Optei por deixar o código separado do html mas poderia ter integrado em um único arquivo html.
 
-<h2 id='Iniciar o projeto'>Como iniciar o projeto</h2>
+<h2>Como iniciar o projeto</h2>
 Para iniciar o projeto basta ter extensão do live server no vscode.
-Caso queira ver o projeto online <a src='https://vitorokubo.github.io/crud/'>link</a> .
+Caso queira ver o projeto online [link](https://vitorokubo.github.io/crud) .
 
 <h2>Melhorias a serem feitas</h2>
 Adicionar o botão de listagem ascendente e descendente por valor.
