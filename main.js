@@ -3,6 +3,7 @@ function setProductList() {
 		localStorage.setItem('products', JSON.stringify([]))
 	}
 }
+
 setProductList()
 let productList = JSON.parse(localStorage.getItem('products'))
 
@@ -14,23 +15,29 @@ function renderProductList() {
 			'<tr><td colspan="7">Não há produtos cadastrados</td></tr>'
 	} else {
 		productList.forEach(product => {
-			tableBody.innerHTML += `<tr><td>${product.id}</td><td>${
-				product.name
-			}</td><td>R$ ${product.value}</td><td>${
-				product.availability == true
-					? '<span class="badge rounded-pill bg-success">Disponível</span>'
-					: '<span class="badge rounded-pill bg-danger">Indisponível</span>'
-			}</td><td style="max-width: 30px">${product.description}</td>
-                     <td>
-
-                         <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editModal" data-bs-id="${
-								product.id
-							}">Editar</button>
-                                  <button type="button" class="btn btn-danger" data-bs-toggle="modal"  data-bs-target="#deleteModal" data-bs-id="${
-										product.id
-									}">X</button>
-
-                     </td></tr>`
+			tableBody.innerHTML += `<tr>
+				<td>${product.id}</td>
+				<td>${product.name}</td>
+				<td>R$ ${product.value}</td>
+				<td>${
+					product.availability == true
+						? '<span class="badge rounded-pill bg-success">Disponível</span>'
+						: '<span class="badge rounded-pill bg-danger">Indisponível</span>'
+				}</td>
+				<td style="max-width: 30px">${product.description}</td>
+				<td>
+					<button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editModal" data-bs-id="${
+						product.id
+					}">
+						Editar
+					</button>
+					<button type="button" class="btn btn-danger" data-bs-toggle="modal"  data-bs-target="#deleteModal" data-bs-id="${
+						product.id
+					}">
+						X
+					</button>
+				</td>
+			</tr>`
 		})
 	}
 }
@@ -46,6 +53,7 @@ deleteModal = addEventListener('show.bs.modal', event => {
 	let buttonDelete = document.getElementById('deleteConfirm')
 	buttonDelete.setAttribute('data-id', id)
 })
+
 function confirmDelete() {
 	let button = document.getElementById('deleteConfirm')
 	var id = button.getAttribute('data-id')
@@ -75,7 +83,6 @@ editModal.addEventListener('show.bs.modal', function (event) {
 	let editProductAvailable = document.getElementById('editProductAvailable')
 	editProductAvailable.checked = product[0].availability
 })
-//teste
 
 function submit(e) {
 	e.preventDefault()
@@ -124,3 +131,22 @@ productForm.addEventListener('submit', submit)
 
 let editForm = document.getElementById('editForm')
 editForm.addEventListener('submit', saveEdit)
+
+function sortByValue(arrow) {
+	let size = productList.length
+	for (let i = 0; i < size - 1; i++) {
+		for (let j = i + 1; j < size; j++) {
+			if (
+				parseFloat(productList[i]['value']) >
+				parseFloat(productList[j]['value'])
+			) {
+				let term = productList[i]
+				productList[i] = productList[j]
+				productList[j] = term
+			}
+		}
+	}
+	arrow === 'downValue' ? null : productList.reverse()
+	renderProductList()
+	localStorage.setItem('products', JSON.stringify(productList))
+}

@@ -17,7 +17,6 @@ Para iniciar o projeto basta ter extensão do live server no vscode.
 Caso queira ver o projeto online [link](https://vitorokubo.github.io/crud) .
 
 <h2>Melhorias a serem feitas</h2>
-Adicionar o botão de listagem ascendente e descendente por valor.
 Refatorar e organizar o código. Replicar o projeto com algum framework.
 
 <h2>Desafios encontrados</h2>
