@@ -1,4 +1,4 @@
-<h1>Projeto de Formulario - CRUD</h1>
+# Form Project - CRUD
 
 <div>
 <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white"/>
@@ -6,18 +6,14 @@
 <img src="https://img.shields.io/badge/bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white"/>
 </div>
 
-<h2>Descrição do projeto</h2>
-Projeto de CRUD simples para registro de itens, com listagem, edição, adição e remoção dos produtos.
-O objetivo do projeto foi entregar um CRUD simples feito rapidamente em meio período, utilizando um escopo limitado de tecnologias e em apenas um arquivo html.
-O desafio foi utilizar apenas Javascript Vanilla e Bootstrap. Os dados são armazaneados em localstorage.
-Optei por deixar o código separado do html mas poderia ter integrado em um único arquivo html.
+## Project Description
+A simple CRUD project for item registration, with listing, editing, adding, and removing of products. The objective of the project was to deliver a simple CRUD quickly in half a day, using a limited scope of technologies and only one html file. The challenge was to use only Vanilla Javascript and Bootstrap. The data is stored in local storage. I chose to leave the code separate from the html, but I could have integrated it into a single html file.
 
-<h2>Como iniciar o projeto</h2>
-Para iniciar o projeto basta ter extensão do live server no vscode.
-Caso queira ver o projeto online [link](https://vitorokubo.github.io/crud) .
+## How to start the project
+To start the project, you only need to have the live server extension installed in vscode. If you want to see the project online [link](https://vitorokubo.github.io/crud).
 
-<h2>Melhorias a serem feitas</h2>
-Refatorar e organizar o código. Replicar o projeto com algum framework.
+## Improvements to be made
+Refactor and organize the code. Replicate the project with a framework.
 
-<h2>Desafios encontrados</h2>
-O maior desafio foi utilizar o Javascript Vanilla, que deixou o projeto longo de ser escrito.
+## Challenges encountered
+The biggest challenge was using Vanilla Javascript, which made the project more lengthy to write.
